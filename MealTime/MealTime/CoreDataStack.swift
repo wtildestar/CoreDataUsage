@@ -2,8 +2,8 @@
 //  CoreDataStack.swift
 //  MealTime
 //
-//  Created by wtildestar on 17/11/2019.
-//  Copyright © 2019 wtildestar. All rights reserved.
+//  Created by Ivan Akulov on 11/11/2016.
+//  Copyright © 2016 Ivan Akulov. All rights reserved.
 //
 
 import Foundation
@@ -12,20 +12,20 @@ import CoreData
 class CoreDataStack {
     
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
-        */
-        let container = NSPersistentContainer(name: "MealTime")
+         */
+        let container = NSPersistentContainer(name: "MealTime") // Имя контейнера нужно поменять на название проекта
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -39,9 +39,9 @@ class CoreDataStack {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -55,5 +55,4 @@ class CoreDataStack {
             }
         }
     }
-    
 }
